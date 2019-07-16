@@ -2,3 +2,4 @@ ethereal
 
 # Vim
 *.sw?
+go.sum
