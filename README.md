@@ -44,7 +44,7 @@ Alternatively you can use a private key directly with the `--privatekey` option,
 
 Ethereal supports all main Ethereum networks  It auto-detects the network by querying the connected node for the network ID.  The connection should be geth-compatible, so either geth itself or parity with the `--geth` flag to enable geth compatibility mode.  The connection could be a local node or a network service such as Infura.
 
-Ethereal contains default connections via Infura to most major networks that can be defined by the `--network` argument.  Supported neworks are mainnet, ropsten, kovan, rinkeby and goerli.  Alternatively a connection to a custom node can be created using the `--connection` argument.  For example a local IPC node might use `--connection=/home/ethereum/.ethereum/geth.ipc` or `--connection=http://localhost:8545/`
+Ethereal contains default connections via Infura to most major networks that can be defined by the `--network` argument.  Supported neworks are mainnet, ropsten, kovan, rinkeby, goerli, volta, and energyweb.  Alternatively a connection to a custom node can be created using the `--connection` argument.  For example a local IPC node might use `--connection=/home/ethereum/.ethereum/geth.ipc` or `--connection=http://localhost:8545/`
 
 ### Configuration file
 

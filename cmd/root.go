@@ -105,6 +105,10 @@ func persistentPreRun(cmd *cobra.Command, args []string) {
 		chainID = big.NewInt(5)
 	case "kovan":
 		chainID = big.NewInt(42)
+	case "volta":
+		chainID = big.NewInt(73799)
+	case "energyweb":
+		chainID = big.NewInt(246)
 	}
 
 	if quiet && verbose {
@@ -199,6 +203,12 @@ func connect() error {
 		case "kovan":
 			outputIf(debug, "Connecting to kovan")
 			client, err = ethclient.Dial("https://kovan.infura.io/v3/831a5442dc2e4536a9f8dee4ea1707a6")
+		case "energyweb":
+			outputIf(debug, "Connecting to energyweb")
+			client, err = ethclient.Dial("https://rpc.energyweb.org")
+		case "volta":
+			outputIf(debug, "Connecting to volta")
+			client, err = ethclient.Dial("http://35.178.1.16")
 		default:
 			cli.Err(quiet, fmt.Sprintf("Unknown network %s", viper.GetString("network")))
 		}
@@ -313,7 +323,7 @@ func init() {
 	viper.BindPFlag("debug", RootCmd.PersistentFlags().Lookup("debug"))
 	RootCmd.PersistentFlags().String("connection", "", "the custom IPC or RPC path to an Ethereum node (overrides network option).  If you are running your own local instance of Ethereum this might be /home/user/.ethereum/geth.ipc (IPC) or http://localhost:8545/ (RPC)")
 	viper.BindPFlag("connection", RootCmd.PersistentFlags().Lookup("connection"))
-	RootCmd.PersistentFlags().String("network", "mainnet", "network to access (mainnet/ropsten/kovan/rinkeby/goerli) (overridden by connection option)")
+	RootCmd.PersistentFlags().String("network", "mainnet", "network to access (mainnet/ropsten/kovan/rinkeby/goerli/volta/energyweb) (overridden by connection option)")
 	viper.BindPFlag("network", RootCmd.PersistentFlags().Lookup("network"))
 	RootCmd.PersistentFlags().Duration("timeout", 30*time.Second, "the time after which a network request will be deemed to have failed.  Increase this if you are running on a error-prone, high-latency or low-bandwidth connection")
 	viper.BindPFlag("timeout", RootCmd.PersistentFlags().Lookup("timeout"))

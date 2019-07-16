@@ -92,6 +92,10 @@ func obtainGethWallet(chainID *big.Int, address common.Address) (accounts.Wallet
 		keydir = filepath.Join(keydir, "rinkeby")
 	} else if chainID.Cmp(params.GoerliChainConfig.ChainID) == 0 {
 		keydir = filepath.Join(keydir, "goerli")
+	} else if chainID.Cmp(params.GoerliChainConfig.ChainID) == 0 {
+		keydir = filepath.Join(keydir, "volta")
+	} else if chainID.Cmp(params.GoerliChainConfig.ChainID) == 0 {
+		keydir = filepath.Join(keydir, "energyweb")
 	}
 	keydir = filepath.Join(keydir, "keystore")
 	backends := []accounts.Backend{keystore.NewKeyStore(keydir, keystore.StandardScryptN, keystore.StandardScryptP)}
@@ -112,6 +116,10 @@ func obtainGethWallets(chainID *big.Int) ([]accounts.Wallet, error) {
 		keydir = filepath.Join(keydir, "rinkeby")
 	} else if chainID.Cmp(params.GoerliChainConfig.ChainID) == 0 {
 		keydir = filepath.Join(keydir, "goerli")
+	} else if chainID.Cmp(params.GoerliChainConfig.ChainID) == 0 {
+		keydir = filepath.Join(keydir, "volta")
+	} else if chainID.Cmp(params.GoerliChainConfig.ChainID) == 0 {
+		keydir = filepath.Join(keydir, "energyweb")
 	}
 	keydir = filepath.Join(keydir, "keystore")
 	backends := []accounts.Backend{keystore.NewKeyStore(keydir, keystore.StandardScryptN, keystore.StandardScryptP)}
