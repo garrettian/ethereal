@@ -104,11 +104,7 @@ func persistentPreRun(cmd *cobra.Command, args []string) {
 	case "goerli", "gorli", "görli":
 		chainID = big.NewInt(5)
 	case "kovan":
-		chainID = big.NewInt(42)
-	case "volta":
 		chainID = big.NewInt(73799)
-	case "energyweb":
-		chainID = big.NewInt(246)
 	}
 
 	if quiet && verbose {
@@ -202,12 +198,6 @@ func connect() error {
 			client, err = ethclient.Dial("https://goerli.infura.io/v3/831a5442dc2e4536a9f8dee4ea1707a6")
 		case "kovan":
 			outputIf(debug, "Connecting to kovan")
-			client, err = ethclient.Dial("https://kovan.infura.io/v3/831a5442dc2e4536a9f8dee4ea1707a6")
-		case "energyweb":
-			outputIf(debug, "Connecting to energyweb")
-			client, err = ethclient.Dial("https://rpc.energyweb.org")
-		case "volta":
-			outputIf(debug, "Connecting to volta")
 			client, err = ethclient.Dial("http://35.178.1.16")
 		default:
 			cli.Err(quiet, fmt.Sprintf("Unknown network %s", viper.GetString("network")))
